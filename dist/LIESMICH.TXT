@@ -1,0 +1,64 @@
+GEOLOSUNG - die Herrnhuter Losungen fuer GeoWorks 1 (Ensemble 1.2 / 1.28)
+=========================================================================
+Version 1.3 (Hilfe im Layout von GeoMaler)
+
+DATEIEN
+  GEOLOS.GEO         das Programm (Name "GeoLosung", Symbol: blaues Buechlein)
+  LOSUNGEN\          GLOS2025.DAT, GLOS2026.DAT, GLOS2027.DAT
+  Umwandler\         GeoLosung-Umwandeln.bat/.ps1 fuer weitere Jahre
+  quelltext\         NASM-Quelltext, Bauskript, Symbol, Test im Emulator
+
+INSTALLATION
+  1. GeoWorks beenden.
+  2. GEOLOS.GEO nach GEOWORKS\WORLD kopieren.
+  3. Im Ordner GEOWORKS\DOCUMENT einen Ordner LOSUNGEN anlegen und die
+     Dateien GLOSjjjj.DAT hineinkopieren.
+     (GeoLosung sucht auch in GEOWORKS\DOCUMENT und in GEOWORKS selbst.)
+  4. GeoWorks starten, im GeoManager "GeoLosung" doppelklicken.
+
+BEDIENUNG
+  Knoepfe oben    < Zurueck, Heute, Vor >, Datum..., Info, Kopieren
+  Pfeil links/rechts (auch Ziffernblock 4/6, + und -)   Tag zurueck/vor
+  Pos1, H (Ziffernblock 7)                              heute
+  D                                                     Datum eingeben,
+                    z. B. 24.12.2027, 24.12.27, 24.12. oder 24122027;
+                    Eingabe springt, Esc bricht ab
+  Pfeil hoch/runter, Bild auf/ab                        Text verschieben
+  K                                                     Losung kopieren
+  I                                                     Info
+  Menue Datei: Heute, Gehe zu Datum..., Losung kopieren, Info, Verlassen
+  Menue Hilfe: Hilfe zu GeoLosung
+
+  Fehlt die Datei fuer ein Jahr, zeigt GeoLosung einen Hinweis an.
+
+NEUE JAHRE
+  Neue de_losJJ.xml besorgen (z. B. mit Losungstext-Aktualisieren.bat von
+  W32LOS), Umwandler\GeoLosung-Umwandeln.bat ausfuehren und die neue
+  GLOSjjjj.DAT nach GEOWORKS\DOCUMENT\LOSUNGEN kopieren.
+
+KOPIEREN
+  "Kopieren", Taste K oder Datei/Losung kopieren legt Datum, Sonntag,
+  Losung und Lehrtext als Text in die Zwischenablage ("Tageslosung").
+  Einfuegen z. B. in GeoWrite oder im Notizblock mit Bearbeiten/Einfuegen.
+
+START BEIM HOCHFAHREN (zum Ausprobieren)
+  1. GeoWorks beenden, GEOLOS.GEO zusaetzlich nach GEOWORKS\SYSAPPL kopieren
+     (dort liegt auch WELCOME.GEO).
+  2. In GEOWORKS\GEOS.INI im Abschnitt [ui] eine Zeile ergaenzen:
+        execOnStartup = welcome.geo geolos.geo
+     welcome.geo muss mit dabei sein, sonst startet GeoManager nicht.
+  3. Zum Abschalten die Zeile wieder loeschen oder mit ; auskommentieren.
+
+DIE LOSUNGEN
+  (c) Evangelische Brueder-Unitaet - Herrnhuter Bruedergemeine,
+  www.losungen.de. Die Texte sind nur fuer den privaten Gebrauch bestimmt.
+
+ENTWICKLUNG
+  Assembler (NASM, 8086) mit dem SDK
+  https://github.com/dnesbitt142/pcgeos-1-sdk-v2
+  Bauen:  SDK=/pfad/zum/sdk ./build.sh
+  Menues und Symbol setzt tools/postbuild.pl ein (wie beim PDF-Betrachter).
+  sdk-erweiterung/ beschreibt Datum, Zwischenablage und Autostart fuer
+  GeoWorks 1.28 (g1clip.inc ist die wiederverwendbare Kopier-Routine).
+  test/emu.py fuehrt die Programmlogik auf dem PC in einem 8086-Emulator aus
+  (pip install unicorn).

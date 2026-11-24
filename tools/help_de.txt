@@ -1,0 +1,47 @@
+# GeoLosung Hilfe. Zeilen: "H " Ueberschrift, "T " Text, "B " Aufzaehlung,
+# "C " Fortsetzung einer Aufzaehlung, "S " fette Zeile, leere Zeile = Abstand.
+# Von Hand umbrochen (hoechstens etwa 80 Zeichen).
+H Übersicht
+T GeoLosung zeigt die Losungen der Herrnhuter Brüdergemeine: für jeden Tag ein
+T Wort aus dem Alten Testament (Losung) und eines aus dem Neuen Testament
+T (Lehrtext). Beim Start erscheint der heutige Tag.
+
+S Zum Blättern in dieser Hilfe...
+B Die Knöpfe Seite hoch und Seite runter unten im Fenster benutzen, auf die
+C Bildlaufleiste rechts klicken oder die Pfeiltasten drücken.
+
+H Tage wählen
+B Zurück und Vor oder Pfeiltasten links und rechts: einen Tag zurück oder vor,
+C auch über den Jahreswechsel. Plus, Minus und Leertaste gehen ebenso.
+B Heute, Taste Pos1 oder H: zurück zum heutigen Tag.
+B Datum... oder Taste D: ein Datum eingeben und mit der Eingabetaste springen.
+C Möglich sind 24.12.2027, 24.12.27, 24.12. (dieses Jahr) oder 24122027.
+C Esc bricht ab, die Rücktaste löscht ein Zeichen.
+B Pfeiltasten hoch und runter, Bild auf und ab: den Text verschieben, wenn er
+C nicht ganz in das Fenster passt.
+
+H Kopieren
+T Kopieren, Taste K oder Datei / Losung kopieren legt Datum, Sonntag, Losung und
+T Lehrtext als Text in die Zwischenablage. In GeoWrite oder im Notizblock wird
+T er mit Bearbeiten / Einfügen eingesetzt.
+
+H Losungsdateien
+T Für jedes Jahr gibt es eine Datei GLOSjjjj.DAT, zum Beispiel GLOS2027.DAT.
+T GeoLosung sucht sie im Ordner DOCUMENT\LOSUNGEN, dann in DOCUMENT und im
+T GeoWorks-Verzeichnis. Fehlt die Datei eines Jahres, erscheint ein Hinweis.
+T Neue Jahre entstehen auf dem PC mit GeoLosung-Umwandeln.bat aus den
+T Losungsdateien von W32LOS (de_losJJ.xml).
+
+H Start mit GeoWorks
+T Damit GeoLosung beim Hochfahren erscheint, GEOLOS.GEO zusätzlich nach
+T SYSAPPL kopieren und in GEOS.INI im Abschnitt [ui] eintragen:
+S execOnStartup = welcome.geo geolos.geo
+
+H Tasten
+B Pfeil links / rechts: Tag zurück / vor
+B Pos1 oder H: heute     D: Datum     K: kopieren     I: Info
+B Pfeil hoch / runter, Bild auf / ab: Text verschieben
+B In dieser Hilfe: Esc oder Eingabetaste schließt sie.
+
+H Die Losungen
+T © Evangelische Brüder-Unität – Herrnhuter Brüdergemeine, www.losungen.de.

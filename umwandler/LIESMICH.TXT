@@ -1,0 +1,59 @@
+GeoLosung - Umwandler fuer die Losungstexte
+===========================================
+
+Was das Skript macht
+--------------------
+GeoLosung-Umwandeln.ps1 liest die Losungsdateien von W32LOS (de_losJJ.xml)
+und schreibt fuer jedes Jahr eine Datei GLOSjjjj.DAT (z.B. GLOS2027.DAT),
+die GeoLosung unter GeoWorks 1 liest.
+
+ - Zeichensatz: GEOS-Zeichensatz. Umlaute, ss, typografische Apostrophe und
+   Gedankenstriche bleiben erhalten. (In DOS sehen die Umlaute deshalb
+   "falsch" aus - das ist richtig so.)
+ - Die festen Zeilenumbrueche der Vorlage werden entfernt; GeoLosung bricht
+   den Text passend zur Fensterbreite selbst um.
+ - Die Sonn- und Feiertagsnamen (z.B. "3. Sonntag der Passionszeit - Okuli
+   (...)") stehen nicht in den XML-Dateien. Das Skript berechnet sie aus dem
+   Kalender (Osterdatum). Gegen die Losungstexte 2025 und 2027 geprueft.
+ - Hervorhebungen wie #ein# werden gesperrt geschrieben: e i n.
+
+Jedes Jahr
+----------
+1. Neue de_losJJ.xml besorgen (z.B. mit Losungstext-Aktualisieren.bat von W32LOS).
+2. GeoLosung-Umwandeln.bat doppelklicken.
+   Ohne Angaben nimmt es alle de_los*.xml aus seinem eigenen Ordner, sonst aus
+   C:\Program Files (x86)\w32los, und legt die DAT-Dateien in seinem Ordner ab.
+3. GLOSjjjj.DAT in den Datenordner von GeoLosung kopieren.
+
+Weitere Aufrufe:
+  GeoLosung-Umwandeln.bat -Quelle "C:\Program Files (x86)\w32los\de_los27.xml"
+  GeoLosung-Umwandeln.bat -Ziel C:\GEOWORKS\DOCUMENT
+  GeoLosung-Umwandeln.bat -AsciiAnfuehrungszeichen
+      (ersetzt ' " durch einfache Zeichen, falls eine Schrift sie nicht hat)
+
+Pruefsummen (zum Vergleich, erste 16 Stellen SHA-256):
+  GLOS2025.DAT  717da6a63b84fa43
+  GLOS2026.DAT  4ff2949605390f74
+  GLOS2027.DAT  0e9b853c4fa61779
+
+Aufbau von GLOSjjjj.DAT
+-----------------------
+Textdatei, eine Angabe pro Zeile, Zeilenende CR LF, GEOS-Zeichensatz.
+
+  GEOLOSUNG 1               Kennung und Formatversion
+  JAHR 2027
+  QUELLE de_los27.xml
+  [0101]                    Beginn eines Tages: [MMTT]
+  T=Freitag, 1. Januar 2027 Wochentag und Datum
+  F=Neujahr                 Sonn-/Feiertag            (nur wenn vorhanden)
+  AE=Der HERR spricht:      Einleitung Losung (AT)    (nur wenn vorhanden)
+  AT=Silber und Gold ...    Losung (Altes Testament)
+  AS=Hesekiel 7,19          Bibelstelle der Losung
+  NE=Jesus sprach:          Einleitung Lehrtext (NT)  (nur wenn vorhanden)
+  NT=Jesus sprach zu ...    Lehrtext (Neues Testament)
+  NS=Matthaeus 19,21        Bibelstelle des Lehrtexts
+  ...
+  [ENDE]
+
+Eine Zeile ist hoechstens etwa 450 Zeichen lang. Eine Jahresdatei hat rund
+110-120 KB.

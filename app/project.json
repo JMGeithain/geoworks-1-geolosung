@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "name": "geolos",
+  "kind": "application",
+  "backend": "ensemble12",
+  "cpu": "8086",
+  "long_name": "GeoLosung",
+  "token": "GLOS",
+  "sources": [{"language": "nasm", "path": "geolos.nasm"}],
+  "view": {"width": 560, "height": 420},
+  "native_runtime_tested": false
+}
